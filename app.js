@@ -8,6 +8,8 @@ LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
   $scope.lunchItems = "";
   $scope.message = "";
+  $scope.messageStyle = {};
+  $scope.inputStyle = {};
 
   // Function to check if the provided string is empty or not
   // Returns true for empty result
@@ -33,8 +35,13 @@ function LunchCheckController($scope) {
   // Returns "Enjoy!" message for items less than or equal to 3
   // Returns "Too much!" for items more than 3
   $scope.checkIfTooMuch = function () {
-    if ($scope.checkIfEmpty($scope.lunchItems)) $scope.message = "Please enter data first";
-    else {
+    if ($scope.checkIfEmpty($scope.lunchItems)) {
+      $scope.message = "Please enter data first";
+      $scope.messageStyle.colorClass = "red-font";
+      $scope.inputStyle.colorClass = "red-border";
+    } else {
+      $scope.messageStyle.colorClass = "green-font";
+      $scope.inputStyle.colorClass = "green-border";
       if ($scope.countItems($scope.lunchItems) <= 3) $scope.message = "Enjoy!";
       else $scope.message = "Too much!";
     }
