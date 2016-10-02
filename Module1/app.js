@@ -22,6 +22,7 @@ function LunchCheckController($scope) {
     var count = 0;
     for(var i = 0; i < items.length; i++) {
       // Check if value between commas is empty
+      // increment count only for non-empty values
       if (!$scope.checkIfEmpty(items[i])) count++;
     }
     return count;
